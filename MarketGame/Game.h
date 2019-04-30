@@ -4,7 +4,8 @@
 
 //////// LIBS
 #include <unordered_map>
-
+#include <string>
+#include <sstream>
 
 //////// ME
 
@@ -32,6 +33,9 @@ private:
 
 	// user input and console data
 	std::string inString;
+
+	// output to console
+	std::stringstream outString;
 
 	//////////////////// Mutators
 	//////////

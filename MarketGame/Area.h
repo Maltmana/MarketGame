@@ -25,24 +25,28 @@ class Area
 	////////// Data
 	////////////////////////////////////////>~
 private:
-
 	std::string description;
+	std::string name;
 	AreaType areaType;
 	char hotkey;
 
 	//////////////////// Mutators
 	//////////
 public:
-
+	std::string const & get_name() const { return name; };
+	std::string const & get_description() const { return description; };
+	AreaType get_areaType() const { return areaType; };
+	char get_hotkey() const { return hotkey; };
 	////////////////////////////////////////>~
 	////////// Constructors
 	////////////////////////////////////////>~
 public:
 	//////////////////// Ctor
 	//////////
-	Area(std::string description, AreaType areaType, char hotkey)
+	Area(std::string description, std::string name, AreaType areaType, char hotkey)
 		:
 		description{description},
+		name{name},
 		areaType{areaType},
 		hotkey{hotkey}
 	{
