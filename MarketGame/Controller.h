@@ -5,6 +5,7 @@
 //////// LIBS
 
 #include <string>
+#include <sstream>
 
 //////// ME
 
@@ -19,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////// Controller.h
 //////////////////////////////////////////////////////////////////////////////////////////////////// >8)
 
-// This is both the controller and the view
+// User input and the mutation that it has on model.
 class Controller
 {
 	////////////////////////////////////////>~
@@ -32,6 +33,10 @@ private:
 
 	// holds user input
 	std::string inString;
+
+	// number taken from user input
+	int inNumber{ 0 };
+
 
 	//////////////////// Mutators
 	//////////
@@ -70,9 +75,15 @@ public:
 	//////////
 private:
 
+	// Loops until user provides good enough input to continue game simulation
+	// Also prints crap to screen if the user is an idiot.
 	void receive_input();
 
-	void compare_commands();
+	// Converts string into other forms of input like integer.
+	void process_input();
+
+	// Mutates model based on that input.
+	void act_on_input();
 
 	////////////////////////////////////////>~
 	////////// Operators

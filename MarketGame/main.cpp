@@ -22,6 +22,6 @@ int main()
 	}
 }
 
-// single step:
-// for now just work on the travelling around mechanism.
-// define a few areas and try to travel around.
+// program from playing the game and making improvements.
+// incrementally improve from play.
+// from user input and feed back.

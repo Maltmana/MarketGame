@@ -1,14 +1,21 @@
 #include "Controller.h"
 
+// Warning Disable
+#pragma warning( push )
+#pragma warning( disable : 4244 ) // caused by std::algorithm and tolower.
+
 
 //////// LIBS
 #include <iostream>
+#include <algorithm>
+#include <cctype>
 
 //////// ME
 
 // ME SAFE
 
 // ME UNSAFE
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////// >8)
 //////////////////////////////////////////////////////////////////////////////////////////////////// Controller.cpp
@@ -49,10 +56,16 @@ Controller::Controller(GameModel & model_)
 
 //////////////////// Public
 //////////
-
+bool invalidInput{ true };
 void Controller::update()
 {
-	receive_input();
+	invalidInput = true;
+	while (invalidInput)
+	{
+		receive_input();
+		process_input();
+	}
+	act_on_input();
 }
 
 //////////////////// Private
@@ -63,29 +76,52 @@ void Controller::receive_input()
 	std::getline(std::cin, inString);
 }
 
-void Controller::compare_commands()
+void Controller::process_input()
 {
-	// Static commands which stay the same every screen ->
-	if (inString == "help")
+	// get number from string
+	std::stringstream ss(inString);
+	ss >> inNumber;
+	// make string all lower case
+	std::transform(inString.begin(), inString.end(), inString.begin(), [](unsigned char c) -> unsigned char { return std::tolower(c); }); // TODO : use unicode library
+
+	if (inString == "h") // we do this here because there is no reason to update the model without an appropriate command for it.
 	{
-		// can raise help event , can set help state, can raise flag for help. 
+		std::cout << "I have no help for you.\n";
+		return;
+	}
+	if (inString == "debug") // we do this here because there is no reason to update the model without an appropriate command for it.
+	{
+		model.set_debug(!model.get_debug());
+		std::cout << "Debug mode = " << model.get_debug() << "\n";
+		return;
+	}
+	if (inNumber <= 0)
+	{
+		std::cout << "Invalid input. This program only accepts integers greater than 0.\n";
+		return;
 	}
 
-	// classic adventure game
-	// can navigate trees of connected locations.
-	// can print map of all the locations.
-	// can travel between
-	// map is printed and defined from text file.
+	invalidInput = false;
+}
 
-	/////////////// The commands that the user can issue are dependent on the area, the scene
-	/////////////// If the user is at an area, his commands are the possible areas he can go or things to interact with
-	/////////////// If the user is with a shop - his commands are the shop commands the possible things to buy
-	/////////////// If at a dialogue tree, the dialogue options.
-	// check to see if what the user entered corresponds to any of the possible command options that are generated each turn.
-	// if it doesn't then tell the user nothing and go back to the beginning of the controller loop 
-	// if it does then let the command affect the model and the view result will come to the screen.
+void Controller::act_on_input()
+{
+	// First reset flags and other temp state
+	model.reset_temp_state();
+	// Then this crap
+	model.set_inputCommand(inNumber);
+	if (inString == "h")
+	{
+		model.set_isHelpRequested(true);
+	}
+	// start with help, something the model is not concerned with, except for that different screens provide different prompts. and the screens are determined by the players location.
+
 }
 
 ////////////////////////////////////////>~
 ////////// Operators
 ////////////////////////////////////////>~
+
+
+// Warning Enable
+#pragma warning( pop )

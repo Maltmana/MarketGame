@@ -52,9 +52,11 @@ View::View(GameModel & model_)
 
 void View::update()
 {
+	add_input_border();
 	add_playerStats();
 	add_tips();
-	add_playerCommands();
+	add_response();
+	add_options();
 	send_output();
 }
 
@@ -74,28 +76,38 @@ void View::add_intro()
 	outString.append("Welcome to How Bazaar!\nThis Virtual-Reality experience is brought to you by Wesley Richmond\n");
 }
 
+void View::add_input_border()
+{
+		outString.append("* * * * * * * * * * ");
+		outString.append("* * * * * * * * * *\n");
+		outString.append("* * * * * * * * * * ");
+		outString.append("* * * * * * * * * *\n");
+}
+
 void View::add_playerStats()
 {
 	outString.append("Player Name: " + model.get_player().get_name() + "\n" + "Player Location: " + model.get_player().get_area()->get_name() + "\n");
+	if (model.get_debug())
+	{
+		std::ostringstream ostream;
+		ostream << model.get_turnCount();
+		outString.append("Turn count: " + ostream.str() + "\n");
+	}
 }
 
-void View::add_playerCommands()
+void View::add_response()
 {
-	outString.append(std::string(">>>>>>>>>>\n") + "Commands:\n");
-	{
-		int i{ 1 };
-		for (auto const & area : model.get_worldPlaces())
-		{
+	
+}
 
-			outString.append(std::to_string(i) + ": " + area.get_name() + "\n");
-			i++;
-		}
-	}
+void View::add_options()
+{
+
 }
 
 void View::add_tips()
 {
-	outString.append("Enter 'help' for more details.\n");
+	outString.append("'h' for help.\n");
 }
 
 void View::send_output()

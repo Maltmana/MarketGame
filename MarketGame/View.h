@@ -3,6 +3,7 @@
 #define VIEW_H
 
 //////// LIBS
+#include <sstream>
 
 //////// ME
 
@@ -17,7 +18,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////// View.h
 //////////////////////////////////////////////////////////////////////////////////////////////////// >8)
 
-// Formats output string
+// Formats output string and defines how the world is viewed - the general text of the world.
 class View 	
 {
 	////////////////////////////////////////>~
@@ -68,9 +69,13 @@ private:
 	
 	void add_intro();
 
+	void add_input_border();
+
 	void add_playerStats();
 
-	void add_playerCommands();
+	void add_response();
+
+	void add_options();
 
 	void add_tips();
 

@@ -57,10 +57,9 @@ void Game::init()
 
 void Game::update()
 {
-	model.get_player().get_name();
+	model.update();
 	view.update();
 	controller.update();
-
 }
 
 

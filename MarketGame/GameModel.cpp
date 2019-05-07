@@ -65,6 +65,16 @@ void GameModel::init()
 	//areas.emplace_back(Area("Welcome to the bank. You can hear the jingle of precious metals through the walls.\n", "Bank"));
 }
 
+void GameModel::update()
+{
+	turnCount++;
+}
+
+void GameModel::reset_temp_state()
+{
+	isHelpRequested = false;
+}
+
 
 //////////////////// Private
 //////////
