@@ -132,15 +132,31 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Area.cpp" />
+    <ClCompile Include="Commands.cpp" />
+    <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="GameModel.cpp" />
+    <ClCompile Include="View.cpp" />
+    <ClCompile Include="Wlib.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Area.h" />
     <ClInclude Include="betterenum.h" />
+    <ClInclude Include="Commands.h" />
+    <ClInclude Include="Controller.h" />
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Inventory.h" />
     <ClInclude Include="meta_enum.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="GameModel.h" />
+    <ClInclude Include="View.h" />
+    <ClInclude Include="Wlib.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

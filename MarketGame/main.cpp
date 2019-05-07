@@ -14,12 +14,14 @@
 
 int main()
 {
-
 	Game game;
-
+	game.init();
 	while (true)
 	{
 		game.update();
 	}
-
 }
+
+// single step:
+// for now just work on the travelling around mechanism.
+// define a few areas and try to travel around.

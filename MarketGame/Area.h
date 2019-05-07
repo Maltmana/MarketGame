@@ -3,13 +3,14 @@
 #define AREA_H
 
 //////// LIBS
-
 #include <string>
+#include <list>
+#include <memory>
 
 //////// ME
 
 // ME SAFE
-#include "Enums.h"
+#include "Entity.h"
 
 // ME UNSAFE
 
@@ -19,38 +20,37 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////// Area.h
 //////////////////////////////////////////////////////////////////////////////////////////////////// >8)
 
-class Area
+class Area : public Entity
 {
 	////////////////////////////////////////>~
 	////////// Data
 	////////////////////////////////////////>~
 private:
-	std::string description;
-	std::string name;
-	AreaType areaType;
-	char hotkey;
+	// aesthetic
+	std::string description; // get
+	std::string name; // get
+
+	// position
+
+	// tree structure
+	Area* parentArea;
+	std::list<Area> connectedAreas; // add remove
 
 	//////////////////// Mutators
 	//////////
 public:
 	std::string const & get_name() const { return name; };
 	std::string const & get_description() const { return description; };
-	AreaType get_areaType() const { return areaType; };
-	char get_hotkey() const { return hotkey; };
+
+	void add_connectedArea(Area area);;
+	void remove_connectedArea() {}; // How to implement? what parameter to take?
 	////////////////////////////////////////>~
 	////////// Constructors
 	////////////////////////////////////////>~
 public:
 	//////////////////// Ctor
 	//////////
-	Area(std::string description, std::string name, AreaType areaType, char hotkey)
-		:
-		description{description},
-		name{name},
-		areaType{areaType},
-		hotkey{hotkey}
-	{
-	}
+	Area(std::string description, std::string name);
 
 	//////////////////// Dtor
 	//////////

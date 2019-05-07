@@ -1,12 +1,6 @@
-#include "Area.h"
+#include "GameModel.h"
 
 //////// LIBS
-
-#ifdef DEBUG
-#include <iostream>
-#endif // DEBUG
-
-
 
 //////// ME
 
@@ -25,12 +19,6 @@
 //////////////////// Mutators
 //////////
 
-void Area::add_connectedArea(Area area)
-{
-	connectedAreas.emplace_back(area);
-	area.parentArea = this;
-}
-
 ////////////////////////////////////////>~
 ////////// Constructors
 ////////////////////////////////////////>~
@@ -38,14 +26,8 @@ void Area::add_connectedArea(Area area)
 //////////////////// Ctor
 //////////
 
-Area::Area(std::string description, std::string name)
-	:
-	description{ description },
-	name{ name }
+GameModel::GameModel()
 {
-#ifdef DEBUG
-	std::cout << "DEBUG>> " << "Area created. Name: " + name + ". " + "ID: " << ID << '\n';
-#endif // DEBUG
 }
 
 //////////////////// Dtor
@@ -63,6 +45,26 @@ Area::Area(std::string description, std::string name)
 
 //////////////////// Public
 //////////
+
+void GameModel::init()
+{
+	// World
+
+	// Towns
+	worldPlaces.emplace_back(Area("Tehran. Yummy kebab.\n", "Tehran"));
+	worldPlaces.emplace_back(Area("Time for a name change.\n", "Istanbul"));
+	worldPlaces.emplace_back(Area("When in Rome....\n", "Rome"));
+	worldPlaces.emplace_back(Area("Romania is nothing like Rome!.\n", "Bucharest"));
+	worldPlaces.emplace_back(Area("Lets have orgies and think about stuff!.\n", "Athens"));
+
+	player.set_area(&worldPlaces.back());
+
+	//areas.emplace_back(Area("Welcome to the black market. Be on your guard.\n", "Black Market"));
+	//areas.emplace_back(Area("Welcome to the fish market. It smells here.\n", "Fish Market"));
+	//areas.emplace_back(Area("Welcome to the arena. The intoxicating smell of blood is in the air.\n", "Arena"));
+	//areas.emplace_back(Area("Welcome to the bank. You can hear the jingle of precious metals through the walls.\n", "Bank"));
+}
+
 
 //////////////////// Private
 //////////

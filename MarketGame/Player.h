@@ -1,39 +1,57 @@
 #pragma once
-#ifndef GAME_H
-#define GAME_H
+#ifndef PLAYER_H
+#define PLAYER_H
 
 //////// LIBS
+
+#include <string>
+#include <memory>
 
 //////// ME
 
 // ME SAFE
 
 // ME UNSAFE
-#include "GameModel.h"
-#include "View.h"
-#include "Controller.h"
+#include "Area.h"
 
 // DECLARATIONS
 
 //////////////////////////////////////////////////////////////////////////////////////////////////// >8)
-//////////////////////////////////////////////////////////////////////////////////////////////////// Game.h
+//////////////////////////////////////////////////////////////////////////////////////////////////// Player.h
 //////////////////////////////////////////////////////////////////////////////////////////////////// >8)
 
-// basically the entire application is the Game.
-class Game
+class Player
 {
 	////////////////////////////////////////>~
 	////////// Data
 	////////////////////////////////////////>~
 private:
-	// MVC
-	GameModel model; // must be initialized before View and Controller in init list
-	View view; // dependinject model
-	Controller controller; // dependinject model
-	
+
+	// aesthetics
+	std::string name{ "Generic Genericson" }; // get set
+
+	// mental states
+	int tiredness{ 0 }; // get
+
+	// objects
+	int goldPieces{ 0 }; // get
+
+	// location
+	Area* area{ nullptr };
+
 	//////////////////// Mutators
 	//////////
 public:
+
+	std::string get_name() const { return name; };
+	void set_name(std::string name_) { name = name_; };
+
+	int get_tiredness() const { return tiredness; };
+
+	int get_goldPieces() const { return goldPieces; };
+
+	Area* get_area() const { return area; };
+	void set_area(Area * area_) { area = area_; };
 
 	////////////////////////////////////////>~
 	////////// Constructors
@@ -42,8 +60,7 @@ public:
 
 	//////////////////// Ctor
 	//////////
-
-	Game();
+	Player();
 
 	//////////////////// Dtor
 	//////////
@@ -62,10 +79,6 @@ public:
 	//////////
 public:
 
-	void init();
-
-	void update();
-
 	//////////////////// Private
 	//////////
 private:
@@ -74,7 +87,6 @@ private:
 	////////// Operators
 	////////////////////////////////////////>~
 public:
-
 };
 
 #endif

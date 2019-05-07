@@ -1,0 +1,111 @@
+#include "View.h"
+
+//////// LIBS
+#include <iostream>
+
+//////// ME
+
+// ME SAFE
+
+// ME UNSAFE
+
+//////////////////////////////////////////////////////////////////////////////////////////////////// >8)
+//////////////////////////////////////////////////////////////////////////////////////////////////// View.cpp
+//////////////////////////////////////////////////////////////////////////////////////////////////// >8)
+
+////////////////////////////////////////>~
+////////// Data
+////////////////////////////////////////>~
+
+//////////////////// Mutators
+//////////
+
+////////////////////////////////////////>~
+////////// Constructors
+////////////////////////////////////////>~
+
+//////////////////// Ctor
+//////////
+
+View::View(GameModel & model_)
+	:
+	model{ model_ }
+{
+	add_intro();
+}
+
+//////////////////// Dtor
+//////////
+
+//////////////////// Copy
+//////////
+
+//////////////////// Move
+//////////
+
+////////////////////////////////////////>~
+////////// Functions
+////////////////////////////////////////>~
+
+//////////////////// Public
+//////////
+
+void View::update()
+{
+	add_playerStats();
+	add_tips();
+	add_playerCommands();
+	send_output();
+}
+
+
+
+//////////////////// Private
+//////////
+
+void View::add_intro()
+{
+	for (size_t i = 0; i < 30; i++)
+	{
+		outString.append("* * * * * * * * * * ");
+		outString.append("* * * * * * * * * * ");
+		outString.append("* * * * * * * * * *\n");
+	}
+	outString.append("Welcome to How Bazaar!\nThis Virtual-Reality experience is brought to you by Wesley Richmond\n");
+}
+
+void View::add_playerStats()
+{
+	outString.append("Player Name: " + model.get_player().get_name() + "\n" + "Player Location: " + model.get_player().get_area()->get_name() + "\n");
+}
+
+void View::add_playerCommands()
+{
+	outString.append(std::string(">>>>>>>>>>\n") + "Commands:\n");
+	{
+		int i{ 1 };
+		for (auto const & area : model.get_worldPlaces())
+		{
+
+			outString.append(std::to_string(i) + ": " + area.get_name() + "\n");
+			i++;
+		}
+	}
+}
+
+void View::add_tips()
+{
+	outString.append("Enter 'help' for more details.\n");
+}
+
+void View::send_output()
+{
+	// output and clear
+	std::cout << outString;
+	outString.clear();
+}
+
+////////////////////////////////////////>~
+////////// Operators
+////////////////////////////////////////>~
+
