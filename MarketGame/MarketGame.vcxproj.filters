@@ -13,8 +13,11 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\smart enums">
-      <UniqueIdentifier>{70f8436b-8f3d-4fa9-8c69-75d63aa4c9f1}</UniqueIdentifier>
+    <Filter Include="Header Files\Architecture">
+      <UniqueIdentifier>{9a9ae266-18ac-4eeb-9b88-3df61a312ec5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameWorld">
+      <UniqueIdentifier>{9bac75a9-0276-4b6b-a9ec-99c4db4d024e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -50,40 +53,34 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Enums.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Area.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="betterenum.h">
-      <Filter>Header Files\smart enums</Filter>
-    </ClInclude>
-    <ClInclude Include="meta_enum.h">
-      <Filter>Header Files\smart enums</Filter>
-    </ClInclude>
-    <ClInclude Include="Inventory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
+    <ClInclude Include="Wlib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameModel.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Architecture</Filter>
     </ClInclude>
-    <ClInclude Include="View.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files\Architecture</Filter>
     </ClInclude>
     <ClInclude Include="Controller.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Architecture</Filter>
+    </ClInclude>
+    <ClInclude Include="View.h">
+      <Filter>Header Files\Architecture</Filter>
+    </ClInclude>
+    <ClInclude Include="Area.h">
+      <Filter>Header Files\GameWorld</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\GameWorld</Filter>
     </ClInclude>
-    <ClInclude Include="Wlib.h">
+    <ClInclude Include="Inventory.h">
+      <Filter>Header Files\GameWorld</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files\GameWorld</Filter>
+    </ClInclude>
+    <ClInclude Include="Enums.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

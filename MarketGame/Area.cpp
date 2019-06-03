@@ -28,7 +28,6 @@
 void Area::add_connectedArea(Area area)
 {
 	connectedAreas.emplace_back(area);
-	area.parentArea = this;
 }
 
 ////////////////////////////////////////>~

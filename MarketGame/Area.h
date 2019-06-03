@@ -33,7 +33,6 @@ private:
 	// position
 
 	// tree structure
-	Area* parentArea;
 	std::list<Area> connectedAreas; // add remove
 
 	//////////////////// Mutators
@@ -42,8 +41,9 @@ public:
 	std::string const & get_name() const { return name; };
 	std::string const & get_description() const { return description; };
 
-	void add_connectedArea(Area area);;
+	void add_connectedArea(Area area);
 	void remove_connectedArea() {}; // How to implement? what parameter to take?
+	std::list<Area> const & get_connectedAreas() { return connectedAreas; };
 	////////////////////////////////////////>~
 	////////// Constructors
 	////////////////////////////////////////>~

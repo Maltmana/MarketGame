@@ -4,31 +4,69 @@
 
 //////// ME
 
-// ME SAFE
+// SAFE
 
-// ME UNSAFE
+// UNSAFE
 
-//////////////////////////////////////////////////////////////////////////////////////////////////// >8)
-//////////////////////////////////////////////////////////////////////////////////////////////////// ClassX.cpp
-//////////////////////////////////////////////////////////////////////////////////////////////////// >8)
-
-////////////////////////////////////////>~
+////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////// Data
-////////////////////////////////////////>~
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//////////////////// Mutators
+//////////////////// DataInterface
 //////////
 
-////////////////////////////////////////>~
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////// Functions
+////////////////////////////////////////////////////////////////////////////////////////////////////
+void GameModel::turn()
+{
+	turnCount++;
+}
+
+void GameModel::reset_temp_state()
+{
+	commands.reset();
+	goodInput = false;
+}
+
+//////////////////// FuncInterface
+//////////
+void GameModel::build()
+{
+	// Areas
+
+	// Towns
+	areas.emplace_back(Area("Tehran. Yummy kebab.\n", "Tehran"));
+	areas.emplace_back(Area("Time for a name change.\n", "Istanbul"));
+	areas.emplace_back(Area("When in Rome....\n", "Rome"));
+	areas.emplace_back(Area("Romania is nothing like Rome!.\n", "Bucharest"));
+	areas.emplace_back(Area("Lets have orgies and think about stuff!.\n", "Athens"));
+
+	player.set_area(&areas.back());
+
+	//areas.emplace_back(Area("Welcome to the black market. Be on your guard.\n", "Black Market"));
+	//areas.emplace_back(Area("Welcome to the fish market. It smells here.\n", "Fish Market"));
+	//areas.emplace_back(Area("Welcome to the arena. The intoxicating smell of blood is in the air.\n", "Arena"));
+	//areas.emplace_back(Area("Welcome to the bank. You can hear the jingle of precious metals through the walls.\n", "Bank"));
+
+	reset_temp_state();
+}
+
+void GameModel::update()
+{
+	turn();
+	reset_temp_state();
+}
+
+//////////////////// Operators
+//////////
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////// Constructors
-////////////////////////////////////////>~
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////// Ctor
 //////////
-
-GameModel::GameModel()
-{
-}
 
 //////////////////// Dtor
 //////////
@@ -38,47 +76,3 @@ GameModel::GameModel()
 
 //////////////////// Move
 //////////
-
-////////////////////////////////////////>~
-////////// Functions
-////////////////////////////////////////>~
-
-//////////////////// Public
-//////////
-
-void GameModel::init()
-{
-	// World
-
-	// Towns
-	worldPlaces.emplace_back(Area("Tehran. Yummy kebab.\n", "Tehran"));
-	worldPlaces.emplace_back(Area("Time for a name change.\n", "Istanbul"));
-	worldPlaces.emplace_back(Area("When in Rome....\n", "Rome"));
-	worldPlaces.emplace_back(Area("Romania is nothing like Rome!.\n", "Bucharest"));
-	worldPlaces.emplace_back(Area("Lets have orgies and think about stuff!.\n", "Athens"));
-
-	player.set_area(&worldPlaces.back());
-
-	//areas.emplace_back(Area("Welcome to the black market. Be on your guard.\n", "Black Market"));
-	//areas.emplace_back(Area("Welcome to the fish market. It smells here.\n", "Fish Market"));
-	//areas.emplace_back(Area("Welcome to the arena. The intoxicating smell of blood is in the air.\n", "Arena"));
-	//areas.emplace_back(Area("Welcome to the bank. You can hear the jingle of precious metals through the walls.\n", "Bank"));
-}
-
-void GameModel::update()
-{
-	turnCount++;
-}
-
-void GameModel::reset_temp_state()
-{
-	isHelpRequested = false;
-}
-
-
-//////////////////// Private
-//////////
-
-////////////////////////////////////////>~
-////////// Operators
-////////////////////////////////////////>~
